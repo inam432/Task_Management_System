@@ -1,0 +1,12 @@
+import express from "express";
+import {signIn} from "../Controllers/signIn.Controller.js";
+import signUp from "../Controllers/signUp.Controller.js";
+import {addTask,getTasks,deleteTask,updateTask} from "../Controllers/tasks.Controller.js";
+const router = express.Router();
+router.post("/signup",signUp);
+router.post("/signin",signIn);
+router.post("/insertTask",addTask);
+router.get("/getTasks/:email",getTasks);
+router.delete("/deleteTask/:id",deleteTask);
+router.put("/updateTask/:id", updateTask);
+export default router;
