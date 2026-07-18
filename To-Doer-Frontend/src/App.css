@@ -1,0 +1,47 @@
+input,button{
+  color: black;     
+  background-color: white; 
+}
+.header{
+text-align: center;
+background-color:azure;
+color:chocolate;
+}
+.welcome{
+  text-align: center;
+  font-style: italic;
+}
+.link{ 
+  text-decoration: none;
+  color:black;
+}
+.signupbox{
+  color:white;
+  background-color:black;
+  margin:7% 35%;
+  width:30%;
+}
+@media (min-width: 320px) and (max-width: 768px) {
+  .signupbox{
+    color:white;
+    background-color:black;
+    margin:1% 12%;
+    width:69%;
+  }
+}
+.titlebox{
+  text-align: center;
+}
+.buttonbox{
+  text-align:center;
+}
+.buttonClass2{
+  text-align:center;
+  color:white;
+  background-color: green;
+  border-color:green ;
+}
+.buttonClass2:hover{
+font-size:17px;
+background-color:lightgreen;
+}
