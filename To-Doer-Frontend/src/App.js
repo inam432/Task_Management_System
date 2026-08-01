@@ -256,11 +256,8 @@ if(response.data.message=='Login Successful'){
       setCompletedTasks([...completedTasks.filter((item)=>{return item !== v})])}}/></td><td>
     <button onClick={()=>{ const response =  axios.delete(
             `http://localhost:3425/api/deleteTask/${taskIds[i]}`
-        );const remainingtasks = [...totalTasks];   
-  remainingtasks.splice(i, 1);          
-  setTotalTasks(remainingtasks);const remainingdeadlines = [...deadlines];   
-  remainingdeadlines.splice(i, 1);          
-  setDeadlines(remainingdeadlines); }}><i className="bi bi-trash"></i></button> 
+        );
+        getAllTasks(); }}><i className="bi bi-trash"></i></button> 
 </td></tr>})}</tbody>
     </table>
     <div style={{marginLeft:'44%'}}>
