@@ -105,7 +105,7 @@ getAllTasks();}}
       document.getElementById("phoneNumber").value="";
       document.getElementById("password").value="";
     }else{
-     alert("Signup not successful"); 
+     alert("User with this email already exists. Please enter a different email"); 
     }}}
     async function validateSignin(event){
       event.preventDefault()
