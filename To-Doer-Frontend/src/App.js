@@ -1,9 +1,7 @@
-import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './App.css';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from "axios";
 function App() {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -25,7 +23,7 @@ function App() {
   const [showDashboard, setShowDashboard]=useState(false);
   const [showTaskAdd, setShowTaskAdd]=useState(false);
   const [searchTask, setSearchTask]=useState("");
-  let [lowerTotalTasks ,setLowerTotalTasks]=useState([])
+  let lowerTotalTasks=[]
   {lowerTotalTasks=totalTasks.map((i)=>{return i.toLowerCase()})}
   const searchDeadlineIndex=lowerTotalTasks.indexOf(searchTask.toLowerCase());
   async function getAllTasks(){
@@ -61,7 +59,7 @@ setTaskIds(sortedIds);
 const taskName = prompt("Enter Task Name",v);
 const taskDeadline = 
 prompt("Enter Task Deadline",deadlines[i]);if(taskDeadline.value!==''&&taskName.value!==''){
-  let response=await axios.put(
+  await axios.put(
     `https://to-doer.onrender.com/api/updateTask/${taskIds[i]}`,
     {
         taskName,
@@ -97,7 +95,7 @@ getAllTasks();}}
           password,
         }
     );
-    if(response.data.message=='Signup Successful'){
+    if(response.data.message==='Signup Successful'){
       setShowLogin(true)
       alert("Successful signup")
       document.getElementById("name").value="";
@@ -118,7 +116,7 @@ getAllTasks();}}
           password2
         }
     );
-if(response.data.message=='Login Successful'){
+if(response.data.message==='Login Successful'){
   alert('Successful Login')
   document.getElementById("name2").value="";
   document.getElementById("email2").value="";
