@@ -24,7 +24,7 @@ function App() {
   const [showTaskAdd, setShowTaskAdd]=useState(false);
   const [searchTask, setSearchTask]=useState("");
   let lowerTotalTasks=[]
-  {lowerTotalTasks=totalTasks.map((i)=>{return i.toLowerCase()})}
+  lowerTotalTasks=totalTasks.map((i)=>{return i.toLowerCase()})
   const searchDeadlineIndex=lowerTotalTasks.indexOf(searchTask.toLowerCase());
   async function getAllTasks(){
     const res = await axios.get(
@@ -252,7 +252,7 @@ if(response.data.message==='Login Successful'){
       Edit</button></td>
     <td><input type="checkbox" onChange={(e)=>{e.target.checked?setCompletedTasks([...completedTasks,v]):
       setCompletedTasks([...completedTasks.filter((item)=>{return item !== v})])}}/></td><td>
-    <button onClick={()=>{ const response =  axios.delete(
+    <button onClick={()=>{axios.delete(
             `https://to-doer.onrender.com/api/deleteTask/${taskIds[i]}`
         );
         getAllTasks(); }}><i className="bi bi-trash"></i></button> 
