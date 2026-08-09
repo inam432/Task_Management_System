@@ -30,7 +30,7 @@ function App() {
   const searchDeadlineIndex=lowerTotalTasks.indexOf(searchTask.toLowerCase());
   async function getAllTasks(){
     const res = await axios.get(
-      `http://localhost:3425/api/getTasks/${email2}`
+      `https://to-doer.onrender.com/api/getTasks/${email2}`
   );
   const taskNames = res.data.map((task)=>{return task.taskName});
   const taskDeadlines = res.data.map((task)=>{return task.deadline});
@@ -62,7 +62,7 @@ const taskName = prompt("Enter Task Name",v);
 const taskDeadline = 
 prompt("Enter Task Deadline",deadlines[i]);if(taskDeadline.value!==''&&taskName.value!==''){
   let response=await axios.put(
-    `http://localhost:3425/api/updateTask/${taskIds[i]}`,
+    `https://to-doer.onrender.com/api/updateTask/${taskIds[i]}`,
     {
         taskName,
         taskDeadline
@@ -89,7 +89,7 @@ getAllTasks();}}
     (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{7,}$/.test(password))){
       e.preventDefault()
       const response = await axios.post(
-        "http://localhost:3425/api/signup",
+        "https://to-doer.onrender.com/api/signup",
         {
           name,
           email,
@@ -110,7 +110,7 @@ getAllTasks();}}
     async function validateSignin(event){
       event.preventDefault()
       const response = await axios.post(
-        "http://localhost:3425/api/signin",
+        "https://to-doer.onrender.com/api/signin",
         {
           name2,
           email2,
@@ -135,7 +135,7 @@ if(response.data.message=='Login Successful'){
       let deadline=document.getElementById('deadline');
       if(deadline.value!==''&&task.value!==''){
         const response = await axios.post(
-                "http://localhost:3425/api/insertTask",
+                "https://to-doer.onrender.com/api/insertTask",
                 {
                     taskName:task.value,
                     deadline:deadline.value,
@@ -255,7 +255,7 @@ if(response.data.message=='Login Successful'){
     <td><input type="checkbox" onChange={(e)=>{e.target.checked?setCompletedTasks([...completedTasks,v]):
       setCompletedTasks([...completedTasks.filter((item)=>{return item !== v})])}}/></td><td>
     <button onClick={()=>{ const response =  axios.delete(
-            `http://localhost:3425/api/deleteTask/${taskIds[i]}`
+            `https://to-doer.onrender.com/api/deleteTask/${taskIds[i]}`
         );
         getAllTasks(); }}><i className="bi bi-trash"></i></button> 
 </td></tr>})}</tbody>

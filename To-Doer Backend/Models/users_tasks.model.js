@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-
-mongoose.connect("mongodb://127.0.0.1:27017/Users")
+import "dotenv/config";
+mongoose.connect(process.env.db_url_Users)
 .then(() => {
     console.log("MongoDB Connected");
 })
