@@ -28,7 +28,7 @@ function App() {
   const searchDeadlineIndex=lowerTotalTasks.indexOf(searchTask.toLowerCase());
   async function getAllTasks(){
     const res = await axios.get(
-      `https://to-doer.onrender.com/api/getTasks/${email2}`
+      `https://task-management-system-g6of.onrender.com/api/getTasks/${email2}`
   );
   const taskNames = res.data.map((task)=>{return task.taskName});
   const taskDeadlines = res.data.map((task)=>{return task.deadline});
@@ -60,7 +60,7 @@ const taskName = prompt("Enter Task Name",v);
 const taskDeadline = 
 prompt("Enter Task Deadline",deadlines[i]);if(taskDeadline.value!==''&&taskName.value!==''){
   await axios.put(
-    `https://to-doer.onrender.com/api/updateTask/${taskIds[i]}`,
+    `https://task-management-system-g6of.onrender.com/api/updateTask/${taskIds[i]}`,
     {
         taskName,
         taskDeadline
@@ -87,7 +87,7 @@ getAllTasks();}}
     (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{7,}$/.test(password))){
       e.preventDefault()
       const response = await axios.post(
-        "https://to-doer.onrender.com/api/signup",
+        "https://task-management-system-g6of.onrender.com/api/signup",
         {
           name,
           email,
@@ -108,7 +108,7 @@ getAllTasks();}}
     async function validateSignin(event){
       event.preventDefault()
       const response = await axios.post(
-        "https://to-doer.onrender.com/api/signin",
+        "https://task-management-system-g6of.onrender.com/api/signin",
         {
           name2,
           email2,
@@ -133,7 +133,7 @@ if(response.data.message==='Login Successful'){
       let deadline=document.getElementById('deadline');
       if(deadline.value!==''&&task.value!==''){
         const response = await axios.post(
-                "https://to-doer.onrender.com/api/insertTask",
+                "https://task-management-system-g6of.onrender.com/api/insertTask",
                 {
                     taskName:task.value,
                     deadline:deadline.value,
@@ -188,7 +188,8 @@ if(response.data.message==='Login Successful'){
       document.getElementById("password2").value="";
         }
   return(<div className='col-xs-12 col-md-12'>
-    <div className="header"><h1 style={{display:'inline'}}>To-Doer</h1>{(showDashboard || showTaskAdd)?
+    <div className="header"><h1 style={{display:'inline'}}>Task Management System</h1>
+    {(showDashboard || showTaskAdd)?
     <div style={{float:'right'}}><button onClick={()=>{setShowTaskAdd(!showTaskAdd);
     setShowDashboard(!showDashboard);setShowLogin(!showLogin);}}
      style={{display:'inline',marginTop:'2%'}} class="btn btn-primary buttonClass2">
@@ -200,7 +201,7 @@ if(response.data.message==='Login Successful'){
   else if(showTaskAdd){setCompletedTasks([]);
       setShowTaskAdd(!showTaskAdd);setShowLogin(!showLogin);}}}>
       Log out</button></div>:""}</div>{!(showDashboard)&&!(showTaskAdd)?<h3 className="welcome">
-        Welcome to To-Doer</h3>:""}{showLogin&&!(showTaskAdd)? 
+        Welcome to Task Management System</h3>:""}{showLogin&&!(showTaskAdd)? 
         (<div className="card signupbox"><div className="card-body"><h1 className="card-title titlebox">
           Sign Up</h1><form onSubmit={validateSignUp} className="card-text"><label>Name: &nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
@@ -253,7 +254,7 @@ if(response.data.message==='Login Successful'){
     <td><input type="checkbox" onChange={(e)=>{e.target.checked?setCompletedTasks([...completedTasks,v]):
       setCompletedTasks([...completedTasks.filter((item)=>{return item !== v})])}}/></td><td>
     <button onClick={()=>{axios.delete(
-            `https://to-doer.onrender.com/api/deleteTask/${taskIds[i]}`
+            `https://task-management-system-g6of.onrender.com/api/deleteTask/${taskIds[i]}`
         );
         getAllTasks(); }}><i className="bi bi-trash"></i></button> 
 </td></tr>})}</tbody>
